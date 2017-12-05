@@ -1034,8 +1034,8 @@ int FIO_compressMultipleFilenames(const char** inFileNamesTable, unsigned nbFile
                 if (!dstFileName)
                     EXM_THROW(30, "zstd: %s", strerror(errno));
             }
-            strcpy(dstFileName, inFileNamesTable[u]);
-            strcat(dstFileName, suffix);
+            strcpy_s(dstFileName, dfnSize, inFileNamesTable[u]);
+            strcat_s(dstFileName, dfnSize, suffix);
             missed_files += FIO_compressFilename_dstFile(ress, dstFileName, inFileNamesTable[u], compressionLevel);
     }   }
 
